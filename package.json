@@ -1,0 +1,16 @@
+{
+  "name": "parse_jackpot",
+  "version": "1.0.0",
+  "description": "parse_jackpot",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "line-reader": "^0.4.0",
+    "node-excel-export": "^1.4.4"
+  }
+}
