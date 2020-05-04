@@ -1,8 +1,8 @@
 const lineReader = require('line-reader');
 var fs = require('fs');
 var dResult = {};
-
-doExportJackpot();
+var dataGiftCode = "";
+doExportGiftCode();
 function getPropertiesLine(dataline) {
     var item = dataline.split("ItemLogger     -")[1];
     var propertiesOriginal = item.split("|");
@@ -28,6 +28,22 @@ function addPropertiesToResult(properties) {
         }; 
     }
 }
+ function doExportGiftCode() {
+    
+     lineReader.eachLine('logs/giftcode.txt', function(line) {
+        dataGiftCode += line;
+        dataGiftCode += "\n";
+    });
+     setTimeout(function () {
+        exportFileExcel(dataGiftCode, "giftcode");
+     }, 2000);
+    
+ }
+
+ function getDataGiftcode() {
+   
+    return dataGiftCode;
+ }
 
 function doExportJackpot(){
    lineReader.eachLine('logs/jackpot.txt', function(line) {
