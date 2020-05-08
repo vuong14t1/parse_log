@@ -1,11 +1,13 @@
 const lineReader = require('line-reader');
 var fs = require('fs');
 var dResult = {};
-async function doExportJackpot(){
+async function doExportJackpot(nameFile){
+    var date = new Date();
+    nameFile = nameFile === undefined? "jackpot_" + date.getDate() + "_" + date.getMonth() + "_" + date.getFullYear(): nameFile;
     await lineReader.eachLine('logs/jackpot.txt', function(line, last) {
         addPropertiesToResult(getPropertiesLine(line));
         if(last) {
-            exportFileExcel(formatDataJackpot(), "jackpot_07_05");
+            exportFileExcel(formatDataJackpot(), nameFile);
         }
     });
     
@@ -38,7 +40,7 @@ function addPropertiesToResult(properties) {
     }
 }
 function exportFileExcel(data, fileName) {
-    fs.appendFile(fileName + '.xls', data, (err) => {
+    fs.appendFile("./export/" + fileName + '.xls', data, (err) => {
         if (err) throw err;
         console.log('File created');
      });
