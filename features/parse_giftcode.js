@@ -3,7 +3,7 @@ var fs = require('fs');
 var dataGiftCode = "";
 function doExportGiftCode(nameFile) {
     var date = new Date();
-    nameFile = nameFile === undefined? "giftcode_" + date.getDate() + "_" + date.getMonth() + "_" + date.getFullYear(): nameFile;
+    nameFile = nameFile === undefined? "giftcode_" + date.getDate() + "_" + (date.getMonth() + 1) + "_" + date.getFullYear(): nameFile;
     lineReader.eachLine('logs/giftcode.txt', function(line, last) {
        dataGiftCode += line;
        dataGiftCode += "\n";

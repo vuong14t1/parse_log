@@ -10,7 +10,6 @@ async function doExportJackpot(nameFile){
             exportFileExcel(formatDataJackpot(), nameFile);
         }
     });
-    
 }
 
 
@@ -25,17 +24,18 @@ function getPropertiesLine(dataline) {
 }
 
 function addPropertiesToResult(properties) {
-    if(dResult[properties[0] + properties[4]] == null) {
-        dResult[properties[0] + properties[4]] = {
+    console.log("===== " + JSON.stringify(properties));
+    if(dResult[properties[0] + properties[3]] == null) {
+        dResult[properties[0] + properties[3]] = {
             uId: properties[0],
             count: 1,
-            gold: properties[4]
+            gold: properties[3]
         };
     }else {
-        dResult[properties[0] + properties[4]] = {
+        dResult[properties[0] + properties[3]] = {
             uId: properties[0],
-            count: dResult[properties[0] + properties[4]].count + 1,
-            gold: properties[4]
+            count: dResult[properties[0] + properties[3]].count + 1,
+            gold: properties[3]
         }; 
     }
 }
@@ -53,7 +53,6 @@ function formatDataJackpot () {
         var formatItem = item.uId + "\t" + item.count + "\t" + item.gold + "\n";
         data += formatItem;
     }
-    console.log(data);
     return data;
 }
 exports.doExportJackpot = doExportJackpot;

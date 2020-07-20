@@ -2,6 +2,7 @@ const lineReader = require('line-reader');
 var fs = require('fs');
 var parse_jackpot = require("./features/parse_jackpot.js");
 var parse_giftcode = require("./features/parse_giftcode.js");
+var parse_cf_ticket = require("./features/parse_cf_ticket.js");
 processInput(process.argv);
 
 function processInput(input) {
@@ -14,6 +15,9 @@ function processInput(input) {
         break;
         case "giftcode":
             parse_giftcode.doExportGiftCode();
+        break;
+        case "cf_ticket":
+            parse_cf_ticket.doExportCfTicket();
         break;
         case "help":
         console.log("input parameter");
